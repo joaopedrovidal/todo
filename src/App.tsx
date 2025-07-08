@@ -1,21 +1,42 @@
 import Text from "./components/text";
+import LixeiraIcon from './assets/icons/lixeira.svg?react'
+import AddIcon from './assets/icons/add.svg?react'
+import CancelIcon from './assets/icons/cancel.svg?react'
+import LapisIcon from './assets/icons/lapis.svg?react'
+import ListIcon from './assets/icons/list.svg?react'
+import SpinnerIcon from './assets/icons/spinner.svg?react'
+import Icon from "./components/Icon";
+
+
 
 export default function App() {
 
   return (
-    <div className="flex flex-col gap-2">
-      <Text variant={"body-sm-bold"} className="text-pink-base">
-        Olá mundo!
-      </Text>
-      <Text className="text-green-base">
-        Olá Mundo
-      </Text>
-      <Text variant={"body-md-bold"}>
-        Olá mundo!
-      </Text>
-      <Text>
-        Levar o dog para passear
-      </Text>
+    <div className="grid gap-3">
+      <div className="flex flex-col gap-1">
+        <Text variant={"body-sm-bold"} className="text-pink-base">
+          Olá mundo!
+        </Text>
+        <Text className="text-green-base">
+          Olá Mundo
+        </Text>
+        <Text variant={"body-md-bold"}>
+          Olá mundo!
+        </Text>
+        <Text>
+          Levar o dog para passear
+        </Text>
+      </div>
+
+    <div className="flex gap-1">
+      
+    </div>
+      <Icon svg={LixeiraIcon} className="fill-green-base"/>
+      <Icon svg={AddIcon} />
+      <Icon svg={CancelIcon} />
+      <Icon svg={LapisIcon} />
+      <Icon svg={ListIcon} />
+      <Icon svg={SpinnerIcon} animate/>
     </div>
   )
 }
