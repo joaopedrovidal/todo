@@ -6,6 +6,7 @@ import LapisIcon from './assets/icons/lapis.svg?react'
 import ListIcon from './assets/icons/list.svg?react'
 import SpinnerIcon from './assets/icons/spinner.svg?react'
 import Icon from "./components/Icon";
+import Badge from "./components/Bagde";
 
 
 
@@ -37,6 +38,11 @@ export default function App() {
       <Icon svg={LapisIcon} />
       <Icon svg={ListIcon} />
       <Icon svg={SpinnerIcon} animate/>
+
+      <div>
+        <Badge variant={"secondary"}>5</Badge>
+        <Badge variant={"primary"}>2 de 5</Badge>
+      </div>
     </div>
   )
 }

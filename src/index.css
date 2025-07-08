@@ -10,7 +10,7 @@
     --color-gray-300: #7A6E76;
     --color-gray-400: #332E32;
 
-    --color-light-100: #CDDFCC;
+    --color-green-light: #CDDFCC;
     --color-green-base: #52A350;
     --color-green-dark: #2F5C2D;
 
@@ -20,5 +20,5 @@
 
     --font-sans: "Cairo", sans-serif;
 
-    --shadow-sm: 0px 4px 8px 0px rgba(54, 23, 45, 0.05);
+    --shadow-sm: 0px 4px 8px 0px rgba(54, 23, 45, 0.05)
 }
