@@ -1,4 +1,4 @@
-import Text from "./components/text";
+import Text from "./components/Text";
 import LixeiraIcon from './assets/icons/lixeira.svg?react'
 import AddIcon from './assets/icons/add.svg?react'
 import CancelIcon from './assets/icons/cancel.svg?react'
@@ -8,6 +8,7 @@ import SpinnerIcon from './assets/icons/spinner.svg?react'
 import Icon from "./components/Icon";
 import Badge from "./components/Bagde";
 import Button from "./components/Button";
+import ButtonIcon from "./components/ButtonIcon";
 
 
 
@@ -47,6 +48,12 @@ export default function App() {
 
       <div>
         <Button icon={AddIcon}>Nova tarefa</Button>
+      </div>
+
+      <div className="flex gap-1">
+        <ButtonIcon icon={LixeiraIcon} />
+        <ButtonIcon icon={LixeiraIcon} variant={"secondary"}/>
+        <ButtonIcon icon={LixeiraIcon} variant={"tertiary"}/>
       </div>
     </div>
   )

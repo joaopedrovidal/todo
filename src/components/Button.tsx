@@ -1,7 +1,7 @@
 import type React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import Icon from "./Icon"
-import Text from "./text"
+import Text from "./Text"
 
 export const buttonVariants = cva(`
     flex items-center justify-center cursor-pointer
