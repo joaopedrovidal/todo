@@ -9,8 +9,6 @@ export default function TasksList() {
     const { task } = useTasks()
     const { prepareTask } = useTask()
 
-    console.log(task)
-
     function handleNewTask() {
         prepareTask()
     }
