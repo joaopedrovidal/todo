@@ -2,11 +2,11 @@ import useLocalStorage from "use-local-storage";
 import { TASKS_KEY, type Task } from "../models/task";
 
 export default function useTasks(){
-    const [tasks] = useLocalStorage<Task[]>(TASKS_KEY, [])
+    const [task] = useLocalStorage<Task[]>(TASKS_KEY, [])
 
     return {
-        tasks,
-        tasksCount: tasks.length,
-        concludedTasksCount: tasks.filter((tasks) => tasks.concluded).length
+        task,
+        tasksCount: task.length,
+        concludedTasksCount: task.filter((task) => task.concluded).length
     }
 }

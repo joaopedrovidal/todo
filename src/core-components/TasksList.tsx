@@ -5,12 +5,12 @@ import useTasks from "../hooks/useTasks";
 import useTask from "../hooks/useTask";
 
 export default function TasksList() {
-    const { tasks } = useTasks()
+    const { task } = useTasks()
     const { prepareTask } = useTask()
 
-    console.log(tasks)
+    console.log(task)
 
-    function handleNewTask(){
+    function handleNewTask() {
         prepareTask()
     }
 
@@ -20,11 +20,10 @@ export default function TasksList() {
                 <Button icon={Add} className="w-full" onClick={handleNewTask}>Nova tarefa</Button>
             </section>
 
-            <section className="space-y-2"> 
-                <TaskItem />
-                <TaskItem />
-                <TaskItem />
-                <TaskItem />
+            <section className="space-y-2">
+                {task.map((task) => (
+                    <TaskItem key={task.id} task={task}/>
+                ))}
             </section>
         </>
     )
