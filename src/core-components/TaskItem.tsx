@@ -21,12 +21,15 @@ export default function TaskItem({ task }: TaskItemProps) {
     const [isEditing, setIsEditing] = React.useState(task?.state === TaskState.Creating)
     const [taskTitle, setTaskTitle] = React.useState("")
 
-    const { updateTask } = useTask()
+    const { updateTask, updateTaskStatus, deleteTask } = useTask()
     function handleEditTask() {
         setIsEditing(true)
     }
 
     function handleCancelEditTask() {
+        if (task.state === TaskState.Creating) {
+            deleteTask(task.id)
+        }
         setIsEditing(false)
     }
 
@@ -40,13 +43,22 @@ export default function TaskItem({ task }: TaskItemProps) {
         setIsEditing(false)
     }
 
+    function handleChangeTaskStatus(e: React.ChangeEvent<HTMLInputElement>){
+        const checked = e.target.checked
+        updateTaskStatus(task.id, checked)
+    }
+
+    function handleDeleteTask(){
+        deleteTask(task.id)
+    }
+
     return (
         <Card size={"md"} >
             {!isEditing ? (
                 <div className="flex items-center gap-4">
-                    <InputCheckbox
-                        value={task?.concluded?.toString()}
+                    <InputCheckbox                        
                         checked={task?.concluded}
+                        onChange={handleChangeTaskStatus}
                     />
                     <Text
                         className={cx("flex-1", {
@@ -56,7 +68,8 @@ export default function TaskItem({ task }: TaskItemProps) {
                         {task?.title}
                     </Text>
                     <div className="flex gap-1">
-                        <ButtonIcon 
+                        <ButtonIcon
+                            onClick={handleDeleteTask} 
                             type="button"
                             icon={Lixeira} 
                             variant={"tertiary"} 
