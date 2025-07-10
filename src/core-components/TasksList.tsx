@@ -3,6 +3,7 @@ import Add from '../assets/icons/add.svg?react'
 import TaskItem from "./TaskItem";
 import useTasks from "../hooks/useTasks";
 import useTask from "../hooks/useTask";
+import { TaskState } from "../models/task";
 
 export default function TasksList() {
     const { task } = useTasks()
@@ -17,7 +18,14 @@ export default function TasksList() {
     return (
         <>
             <section>
-                <Button icon={Add} className="w-full" onClick={handleNewTask}>Nova tarefa</Button>
+                <Button 
+                    icon={Add} 
+                    className="w-full" 
+                    onClick={handleNewTask}
+                    disabled={task.some((task) => task.state === TaskState.Creating)}
+                >
+                    Nova tarefa
+            </Button>
             </section>
 
             <section className="space-y-2">
