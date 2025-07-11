@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import PageComponents from "./pages/pageComponents";
+// import PageComponents from "./pages/pageComponents";
 import LayoutMain from "./pages/layoutMain";
 import PageHome from "./pages/pageHome";
 
