@@ -9,7 +9,7 @@ export default function App() {
       <Routes>
         <Route element={<LayoutMain />}>
           <Route index element={<PageHome />}/>
-          <Route path='/componentes'  element={<PageComponents />}/>
+          {/* <Route path='/componentes'  element={<PageComponents />}/> */}
         </Route>
       </Routes>
     </BrowserRouter>
