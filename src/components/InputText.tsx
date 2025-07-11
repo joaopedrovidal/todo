@@ -1,5 +1,5 @@
 import { cva, type VariantProps, cx } from "class-variance-authority";
-import { textVariants } from "./Text";
+import { textVariants } from "../components/Text";
 
 export const inputTextVariants = cva(`
     border-b border-solid border-gray-200 focus:border-pink-base
