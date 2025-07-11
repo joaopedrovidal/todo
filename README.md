@@ -4,10 +4,6 @@
 
 ---
 
-<h1 align="center">
-    <img src="src/assets/sem-tarefa.png" width="600px"> 
-</h1>
-
 ## 🏷️ Sobre 
 **todo**: Desafio proposto durante o primeiro módulo do curso de ReactJS da trilha Ignite na Rocketseat.
 O desafio proposto era:
