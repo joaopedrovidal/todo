@@ -11,17 +11,20 @@ import InputText from "../components/InputText";
 import { TaskState, type Task } from "../models/task";
 import { cx } from "class-variance-authority";
 import useTask from "../hooks/useTask";
+import Skeleton from "../components/Skeleton";
 
 interface TaskItemProps {
-    task: Task
+    task: Task;
+    loading?: boolean;
 }
 
 
-export default function TaskItem({ task }: TaskItemProps) {
+export default function TaskItem({ task, loading }: TaskItemProps) {
     const [isEditing, setIsEditing] = React.useState(task?.state === TaskState.Creating)
     const [taskTitle, setTaskTitle] = React.useState("")
 
-    const { updateTask, updateTaskStatus, deleteTask } = useTask()
+    const { updateTask, updateTaskStatus, deleteTask, isDeletingTask, isUpdatingTask } = useTask()
+
     function handleEditTask() {
         setIsEditing(true)
     }
@@ -37,48 +40,55 @@ export default function TaskItem({ task }: TaskItemProps) {
         setTaskTitle(e.target.value || "")
     }
 
-    function handleSaveTask(e: React.FormEvent<HTMLFormElement>){
+    async function handleSaveTask(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        updateTask(task.id, {title: taskTitle})
+        await updateTask(task.id, { title: taskTitle })
         setIsEditing(false)
     }
 
-    function handleChangeTaskStatus(e: React.ChangeEvent<HTMLInputElement>){
+    function handleChangeTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
         const checked = e.target.checked
         updateTaskStatus(task.id, checked)
     }
 
-    function handleDeleteTask(){
-        deleteTask(task.id)
+    async function handleDeleteTask() {
+        await deleteTask(task.id)
     }
 
     return (
         <Card size={"md"} >
             {!isEditing ? (
                 <div className="flex items-center gap-4">
-                    <InputCheckbox                        
+                    <InputCheckbox
                         checked={task?.concluded}
                         onChange={handleChangeTaskStatus}
+                        loading={loading}
                     />
-                    <Text
+                    {!loading ? <Text
                         className={cx("flex-1", {
                             'line-through': task?.concluded,
                         })}
                     >
                         {task?.title}
-                    </Text>
+                        </Text> 
+                    : 
+                        <Skeleton className="flex-1 h-6"/>
+                    }
                     <div className="flex gap-1">
                         <ButtonIcon
-                            onClick={handleDeleteTask} 
+                            onClick={handleDeleteTask}
                             type="button"
-                            icon={Lixeira} 
-                            variant={"tertiary"} 
+                            icon={Lixeira}
+                            variant={"tertiary"}
+                            loading={loading}
+                            handling={isDeletingTask}
                         />
-                        <ButtonIcon 
+                        <ButtonIcon
                             type="button"
-                            icon={Lapis} 
-                            variant={"tertiary"} 
-                            onClick={handleEditTask} 
+                            icon={Lapis}
+                            variant={"tertiary"}
+                            onClick={handleEditTask}
+                            loading={loading}
                         />
                     </div>
                 </div>
@@ -90,7 +100,7 @@ export default function TaskItem({ task }: TaskItemProps) {
                         onChange={handleChangeTaskTitle}
                         required
                         autoFocus
-                        
+
                     />
                     <div className="flex gap-1">
                         <ButtonIcon
@@ -103,6 +113,7 @@ export default function TaskItem({ task }: TaskItemProps) {
                             type="submit"
                             icon={Check}
                             variant={"primary"}
+                            handling={isUpdatingTask}
                         />
                     </div>
                 </form>

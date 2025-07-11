@@ -3,10 +3,10 @@ import Add from '../assets/icons/add.svg?react'
 import TaskItem from "./TaskItem";
 import useTasks from "../hooks/useTasks";
 import useTask from "../hooks/useTask";
-import { TaskState } from "../models/task";
+import { TaskState, type Task } from "../models/task";
 
 export default function TasksList() {
-    const { task } = useTasks()
+    const { task, isLoadingTasks } = useTasks()
     const { prepareTask } = useTask()
 
     function handleNewTask() {
@@ -20,16 +20,21 @@ export default function TasksList() {
                     icon={Add} 
                     className="w-full" 
                     onClick={handleNewTask}
-                    disabled={task.some((task) => task.state === TaskState.Creating)}
+                    disabled={task.some((task) => task.state === TaskState.Creating) || isLoadingTasks}
                 >
                     Nova tarefa
             </Button>
             </section>
 
             <section className="space-y-2">
-                {task.map((task) => (
+                {!isLoadingTasks && task.map((task) => (
                     <TaskItem key={task.id} task={task}/>
                 ))}
+                {isLoadingTasks && <>
+                    <TaskItem task={{} as Task} loading/>
+                    <TaskItem task={{} as Task} loading/>
+                    <TaskItem task={{} as Task} loading/>
+                </>}
             </section>
         </>
     )

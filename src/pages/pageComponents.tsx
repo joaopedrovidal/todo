@@ -52,6 +52,7 @@ export default function PageComponents(){
 
         <div>
           <Button icon={AddIcon}>Nova tarefa</Button>
+          <Button icon={AddIcon} handling>Criando</Button>
         </div>
 
         <div className="flex gap-1">
@@ -59,6 +60,7 @@ export default function PageComponents(){
           <ButtonIcon icon={LixeiraIcon} variant={"secondary"} />
           <ButtonIcon icon={LixeiraIcon} variant={"tertiary"} />
           <ButtonIcon icon={LixeiraIcon} loading />
+          <ButtonIcon icon={LixeiraIcon} handling />
         </div>
 
         <div>
