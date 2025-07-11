@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="src/assets/com-tarefa.png"> 
+    <img src="src/assets/images/Thumbnail.png"> 
 </h1>
 
 ---
