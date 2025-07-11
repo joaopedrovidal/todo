@@ -8,9 +8,9 @@ export default function Footer() {
                 <NavLink to='/'>
                     <Text variant={"body-sm-bold"} className="text-gray-300">Tarefas</Text>
                 </NavLink>
-                <NavLink to='/componentes'>
+               {/*<NavLink to='/componentes'>
                     <Text variant={"body-sm-bold"} className="text-gray-300">Componentes</Text>
-                </NavLink>
+                </NavLink>*/}
             </nav>
         </footer>
 
