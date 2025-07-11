@@ -1,5 +1,5 @@
 import type React from "react";
-import Text from "../components/Text";
+import Text from "./Text"
 import { cva, cx, type VariantProps } from "class-variance-authority";
 import Skeleton from "./Skeleton";
 

@@ -2,7 +2,7 @@ import type React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import Icon from "./Icon"
 import SpinnerIcon from '../assets/icons/spinner.svg?react'
-import Text from "../components/Text"
+import Text from "./Text"
 
 export const buttonVariants = cva(`
     flex items-center justify-center cursor-pointer
